@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -7,6 +8,16 @@ import Loader from "../../Shared/Loader/Loader";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const today = new Date(),
+    date =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+
   const {
     register,
     handleSubmit,
@@ -50,7 +61,7 @@ const AddProduct = () => {
             resellingprice: data.resellingprice,
             originalprice: data.originalprice,
             usedtime: data.usedtime,
-            date: data.date,
+            date: date,
             status: "available",
             verified: false,
           };
@@ -67,7 +78,7 @@ const AddProduct = () => {
               if (result.acknowledged === true) {
                 reset();
                 toast.success("Product is added successfully");
-                // navigate("/dashboard/managedoctors");
+                navigate("/dashboard/myproducts");
               }
             });
         }
@@ -145,9 +156,9 @@ const AddProduct = () => {
           <div className="form-control w-full">
             <input
               type="text"
-              placeholder="date"
-              {...register("date", {
-                required: "date is Required",
+              placeholder="Product Condition"
+              {...register("condition", {
+                required: "Product condition is Required",
               })}
               className="input input-bordered w-full"
             />

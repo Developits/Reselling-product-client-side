@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 const BookingModal = ({ modalData, setModalData }) => {
   const { user } = useContext(AuthContext);
-  const { _id, productname, sellername, resellingprice } = modalData;
+  const { _id, productname, resellingprice } = modalData;
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -14,7 +14,7 @@ const BookingModal = ({ modalData, setModalData }) => {
 
     const bookedProduct = {
       buyername: user.displayName,
-      sellername,
+      buyeremail: user.email,
       productname,
       phone,
       location,

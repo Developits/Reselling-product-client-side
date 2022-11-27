@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../../contexts/AuthContext";
 import Loader from "../../Shared/Loader/Loader";
+import { Link } from "react-router-dom";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
@@ -38,11 +39,15 @@ const MyOrders = () => {
                 <th>{i + 1}</th>
                 <td>{order.productname}</td>
                 <td>{order.sellername}</td>
-                <td>{order.location}</td>
+                <td>{order.meetinglocation}</td>
                 <td>
-                  <button className="btn btn-primary">
-                    {order.status === "booked" ? "Pay now" : "Paid"}
-                  </button>
+                  {order.status === "booked" ? (
+                    <Link to={`/dashboard/payment/${order._id}`}>
+                      <button className="btn btn-primary ">Pay now</button>
+                    </Link>
+                  ) : (
+                    <span className="text-green-500">Paid</span>
+                  )}
                 </td>
               </tr>
             ))}

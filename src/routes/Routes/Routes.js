@@ -8,6 +8,7 @@ import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
 import MyBuyers from "../../pages/Dashboard/MyBuyers/MyBuyers";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../pages/Dashboard/MyProducts/MyProducts";
+import Payment from "../../pages/Dashboard/Payment/Payment";
 import ReportedItems from "../../pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
@@ -86,6 +87,12 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/reporteditems",
         element: <ReportedItems></ReportedItems>,
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/booking/${params.id}`),
       },
     ],
   },

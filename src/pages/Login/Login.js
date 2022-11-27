@@ -76,7 +76,7 @@ const Login = () => {
       <h1 className="text-3xl text-center font-bold">Please log in !</h1>
       <form onSubmit={handleSubmit} className="card-body mt-0">
         <div className="form-control">
-          <label className="label mt-0">
+          <label className="label -mt-24">
             <span>Email</span>
           </label>
           <input

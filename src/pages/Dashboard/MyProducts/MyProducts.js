@@ -85,29 +85,26 @@ const MyProducts = () => {
                 <td>{product.resellingprice}</td>
                 <td>{product.date}</td>
                 <td>{product.status}</td>
-
-                {product.status === "available" && !product.advertise ? (
-                  <>
-                    <td>
-                      <button
-                        onClick={() => handleAdvertiseProduct(product._id)}
-                        className="btn btn-primary"
-                      >
-                        Advertise
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleDeleteProduct(product._id)}
-                        className="btn btn-primary"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </>
-                ) : (
-                  <></>
-                )}
+                <td>
+                  {!product.advertise && (
+                    <button
+                      onClick={() => handleAdvertiseProduct(product._id)}
+                      className="btn btn-primary"
+                    >
+                      Advertise
+                    </button>
+                  )}
+                </td>
+                <td>
+                  {product.status === "available" && (
+                    <button
+                      onClick={() => handleDeleteProduct(product._id)}
+                      className="btn btn-primary"
+                    >
+                      Delete
+                    </button>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../assets/Logo/Salvage_Yard_Logo.png";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 const Navbar = () => {
@@ -63,8 +64,9 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          Salvage Yard
+        <Link to="/" className="btn btn-ghost normal-case text-2xl">
+          <img className="w-10" src={logo} alt="" />
+          <p className="Font-bold">Salvage Yard</p>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

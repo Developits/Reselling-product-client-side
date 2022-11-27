@@ -1,18 +1,16 @@
 import React from "react";
 
 const AdvertiseCard = ({ advertise }) => {
-  const { img, name } = advertise;
+  const { img, productname } = advertise;
 
   return (
-    <div>
+    <div className="text-center">
       <div className="card  lg:m-12 flex items-end bg-base-100 shadow-xl image-full">
         <figure>
           <img src={img} alt="Category" />
         </figure>
-        <div className="card-body">
-          <h2 className="card-title">{name}</h2>
-        </div>
       </div>
+      <h1 className="-mt-6 text-red-600 text-lg font-bold">{productname}</h1>
     </div>
   );
 };
