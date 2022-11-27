@@ -6,6 +6,17 @@ import Loader from "../Shared/Loader/Loader";
 
 const ProductCard = ({ product, setModalData }) => {
   const { user } = useContext(AuthContext);
+  const {
+    img,
+    productname,
+    location,
+    sellername,
+    resellingprice,
+    originalprice,
+    usedtime,
+    date,
+  } = product;
+
   const { data: currentUser = [], isLoading } = useQuery({
     queryKey: ["users", user.email],
     queryFn: async () => {
@@ -16,20 +27,21 @@ const ProductCard = ({ product, setModalData }) => {
       return data;
     },
   });
+
+  const { data: sellerData = [] } = useQuery({
+    queryKey: ["users", sellername],
+    queryFn: async () => {
+      const res = await fetch(
+        `http://localhost:5000/sellerdata?name=${sellername}`
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
+
   if (isLoading) {
     return <Loader></Loader>;
   }
-  const {
-    img,
-    productname,
-    location,
-    sellername,
-    resellingprice,
-    originalprice,
-    usedtime,
-    date,
-    verified,
-  } = product;
 
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -61,7 +73,7 @@ const ProductCard = ({ product, setModalData }) => {
               Seller Name:
               <div className="indicator">
                 <span className="indicator-item indicator-top indicator-end rounded-full badge-success">
-                  {verified && <FiCheckCircle />}
+                  {sellerData.verified && <FiCheckCircle />}
                 </span>
                 <div>{sellername}</div>
               </div>

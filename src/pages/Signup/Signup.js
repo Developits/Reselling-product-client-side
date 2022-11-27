@@ -40,6 +40,7 @@ const SignUp = () => {
           name: data.name,
           email: data.email,
           accountType: data.accountType,
+          verified: false,
         };
 
         handleUpdateUserProfile(userInfo);

@@ -1,9 +1,14 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../Shared/Loader/Loader";
+import toast from "react-hot-toast";
 
 const AllSellers = () => {
-  const { data: allSellers = [], isLoading } = useQuery({
+  const {
+    data: allSellers = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["allsellers"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/allsellers");
@@ -11,6 +16,36 @@ const AllSellers = () => {
       return data;
     },
   });
+
+  const handleDeleteSeller = (id) => {
+    fetch(`http://localhost:5000/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success(`Seller deleted successfully`);
+        }
+      });
+  };
+
+  const handleVerifySeller = (id) => {
+    fetch(`http://localhost:5000/verifyseller/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          refetch();
+          toast.success("This seller is now verified.");
+        }
+      });
+  };
+
   if (isLoading) {
     return <Loader></Loader>;
   }
@@ -23,6 +58,7 @@ const AllSellers = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
+              <th>Verification</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -33,7 +69,24 @@ const AllSellers = () => {
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
                 <td>
-                  <button className="btn btn-xs btn-danger">Delete</button>
+                  {!seller.verified ? (
+                    <button
+                      onClick={() => handleVerifySeller(seller._id)}
+                      className="btn btn-xs btn-danger"
+                    >
+                      Verify
+                    </button>
+                  ) : (
+                    <span className="text-green-500">Verified</span>
+                  )}
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDeleteSeller(seller._id)}
+                    className="btn btn-xs btn-danger"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

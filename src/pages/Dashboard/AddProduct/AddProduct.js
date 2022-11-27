@@ -63,7 +63,6 @@ const AddProduct = () => {
             usedtime: data.usedtime,
             date: date,
             status: "available",
-            verified: false,
           };
 
           fetch("http://localhost:5000/products", {

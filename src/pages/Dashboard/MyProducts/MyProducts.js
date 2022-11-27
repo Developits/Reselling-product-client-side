@@ -86,13 +86,17 @@ const MyProducts = () => {
                 <td>{product.date}</td>
                 <td>{product.status}</td>
                 <td>
-                  {!product.advertise && (
-                    <button
-                      onClick={() => handleAdvertiseProduct(product._id)}
-                      className="btn btn-primary"
-                    >
-                      Advertise
-                    </button>
+                  {!product.advertise && product.status === "available" ? (
+                    <>
+                      <button
+                        onClick={() => handleAdvertiseProduct(product._id)}
+                        className="btn btn-primary"
+                      >
+                        Advertise
+                      </button>
+                    </>
+                  ) : (
+                    <></>
                   )}
                 </td>
                 <td>
