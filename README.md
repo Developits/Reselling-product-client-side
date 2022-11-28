@@ -30,10 +30,10 @@ product.On that purpose, I build this website.
 
 ## Live website Link:
 
-website: https://salvage-yard-1ab9c.web.app
-
-Client repo :
+Client-side:
 https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-Developits
+Server-side:
+https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-Developits
+Live website: https://salvage-yard-1ab9c.web.app
 
-Server repo :
-https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-Developits
+adminEmail: nahid@gmail.com adminPassword: nahidulislam
