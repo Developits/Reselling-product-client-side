@@ -5,9 +5,12 @@ import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const { signIn, setLoading, providerLogin } = useContext(AuthContext);
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
 
   const [error, setError] = useState("");
 
@@ -15,6 +18,10 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,8 +34,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        form.reset();
-        navigate(from, { replace: true });
+        setLoginUserEmail(email);
       })
       .catch((error) => {
         console.error(error);
@@ -52,8 +58,9 @@ const Login = () => {
           accountType: "buyer",
           verified: false,
         };
+        setLoginUserEmail(user.email);
         saveUser(userInfo);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -74,8 +81,9 @@ const Login = () => {
           accountType: "buyer",
           verified: false,
         };
+        setLoginUserEmail(user.email);
         saveUser(userInfo);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -94,7 +102,7 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // setCreatedUserEmail(userData.email);
+        setLoginUserEmail(userData.email);
         navigate(from, { replace: true });
       });
   };

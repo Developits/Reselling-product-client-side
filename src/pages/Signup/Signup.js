@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-// import useToken from "../../hooks/useToken";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const {
@@ -23,22 +23,22 @@ const SignUp = () => {
   const { createUser, updateUserProfile, providerLogin } =
     useContext(AuthContext);
   const [signUpError, setSignUPError] = useState("");
-  // const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
 
-  // const [token] = useToken(createdUserEmail);
-  // console.log(createdUserEmail);
-  // if (token) {
-  //   navigate("/");
-  // }
+  const [token] = useToken(createdUserEmail);
+  console.log(createdUserEmail);
+  if (token) {
+    navigate("/");
+  }
 
   const handleSignUp = (data) => {
     setSignUPError("");
-    createUser(data.email, data.password)
+    createUser(data?.email, data.password)
       .then((result) => {
         toast.success("User Created Successfully.");
         const userInfo = {
           name: data.name,
-          email: data.email,
+          email: data?.email,
           accountType: data.accountType,
           verified: false,
         };
@@ -71,7 +71,7 @@ const SignUp = () => {
         const user = result.user;
         const userInfo = {
           name: user.displayName,
-          email: user.email,
+          email: user?.email,
           accountType: "buyer",
           verified: false,
         };
@@ -93,7 +93,7 @@ const SignUp = () => {
         const user = result.user;
         const userInfo = {
           name: user.displayName,
-          email: user.email,
+          email: user?.email,
           accountType: "buyer",
           verified: false,
         };
@@ -117,7 +117,7 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // setCreatedUserEmail(userData.email);
+        setCreatedUserEmail(userData?.email);
         navigate(from, { replace: true });
       });
   };
