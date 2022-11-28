@@ -18,6 +18,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setError("");
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -41,11 +42,17 @@ const Login = () => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const handleGoogleSignIn = () => {
-    providerLogin(googleProvider)
+  const handleGoogleSignIn = async () => {
+    await providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const userInfo = {
+          name: user.displayName,
+          email: user.email,
+          accountType: "buyer",
+          verified: false,
+        };
+        saveUser(userInfo);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -61,13 +68,34 @@ const Login = () => {
     providerLogin(githubProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const userInfo = {
+          name: user.displayName,
+          email: user.email,
+          accountType: "buyer",
+          verified: false,
+        };
+        saveUser(userInfo);
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
         const errorMessage = error.message;
         setError(errorMessage);
+      });
+  };
+
+  const saveUser = (userData) => {
+    fetch("http://localhost:5000/addusers", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // setCreatedUserEmail(userData.email);
+        navigate(from, { replace: true });
       });
   };
 

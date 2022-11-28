@@ -69,7 +69,13 @@ const SignUp = () => {
     await providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const userInfo = {
+          name: user.displayName,
+          email: user.email,
+          accountType: "buyer",
+          verified: false,
+        };
+        saveUser(userInfo);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -85,7 +91,13 @@ const SignUp = () => {
     providerLogin(githubProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const userInfo = {
+          name: user.displayName,
+          email: user.email,
+          accountType: "buyer",
+          verified: false,
+        };
+        saveUser(userInfo);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -94,9 +106,10 @@ const SignUp = () => {
         setSignUPError(errorMessage);
       });
   };
+
   const saveUser = (userData) => {
-    fetch("http://localhost:5000/users", {
-      method: "POST",
+    fetch("http://localhost:5000/addusers", {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },

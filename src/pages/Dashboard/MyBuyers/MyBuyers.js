@@ -28,6 +28,7 @@ const MyBuyers = () => {
               <th></th>
               <th>Product Name</th>
               <th>Buyer Name</th>
+              <th>Email</th>
               <th>Phone Number</th>
               <th>Meeting Location</th>
             </tr>
@@ -38,6 +39,7 @@ const MyBuyers = () => {
                 <th>{i + 1}</th>
                 <td>{buyer.productname}</td>
                 <td>{buyer.buyername}</td>
+                <td>{buyer.buyeremail}</td>
                 <td>{buyer.phone}</td>
                 <td>{buyer.location}</td>
               </tr>
