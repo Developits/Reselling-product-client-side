@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { FiCheckCircle } from "react-icons/fi";
+import toast from "react-hot-toast";
+import { FaExclamationTriangle } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../contexts/AuthContext";
 import Loader from "../Shared/Loader/Loader";
@@ -7,6 +9,7 @@ import Loader from "../Shared/Loader/Loader";
 const ProductCard = ({ product, setModalData }) => {
   const { user } = useContext(AuthContext);
   const {
+    _id,
     img,
     productname,
     location,
@@ -39,6 +42,21 @@ const ProductCard = ({ product, setModalData }) => {
     },
   });
 
+  const handelReportItem = () => {
+    fetch(`http://localhost:5000/reportproduct/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Product reported Successfully.");
+        }
+      });
+  };
+
   if (isLoading) {
     return <Loader></Loader>;
   }
@@ -50,6 +68,11 @@ const ProductCard = ({ product, setModalData }) => {
       </figure>
       <div className="p-4 ">
         <h2 className="text-2xl text-center font-bold">{productname}</h2>
+        <div className="flex mb-4 justify-end">
+          <button onClick={handelReportItem}>
+            <FaExclamationTriangle />
+          </button>
+        </div>
         <div className="flex justify-between items-start">
           <div>
             <div>
