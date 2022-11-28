@@ -11,14 +11,16 @@ const AllBuyers = () => {
   } = useQuery({
     queryKey: ["allbuyers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/allbuyers");
+      const res = await fetch(
+        "https://salvage-yard-server.vercel.app/allbuyers"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleDeleteBuyer = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://salvage-yard-server.vercel.app/users/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

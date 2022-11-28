@@ -15,7 +15,7 @@ const MyProducts = () => {
     queryKey: ["products", user.displayName],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/products?user=${user.displayName}`
+        `https://salvage-yard-server.vercel.app/products?user=${user.displayName}`
       );
       const data = await res.json();
       return data;
@@ -23,7 +23,7 @@ const MyProducts = () => {
   });
 
   const handleDeleteProduct = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://salvage-yard-server.vercel.app/products/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -36,7 +36,7 @@ const MyProducts = () => {
   };
 
   const handleAdvertiseProduct = (id) => {
-    fetch(`http://localhost:5000/productsadvertise/${id}`, {
+    fetch(`https://salvage-yard-server.vercel.app/productsadvertise/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

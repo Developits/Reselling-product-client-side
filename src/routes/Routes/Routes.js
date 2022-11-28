@@ -46,8 +46,9 @@ const router = createBrowserRouter([
             <Products></Products>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+        loader: ({ params }) => <Products params={params}></Products>,
+        // loader: ({ params }) =>
+        //   fetch(`https://salvage-yard-server.vercel.app/products/${params.id}`),
       },
     ],
   },
@@ -92,7 +93,7 @@ const router = createBrowserRouter([
         path: "/dashboard/payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/booking/${params.id}`),
+          fetch(`https://salvage-yard-server.vercel.app/booking/${params.id}`),
       },
     ],
   },

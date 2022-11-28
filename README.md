@@ -1,71 +1,39 @@
-# Getting Started with Create React App
+# Salvage Yard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a Smartphone re-selling online market place where people can sell their
+used Phone and buy also.Peoples need a trusted online marketplace for re-selling
+product.On that purpose, I build this website.
 
-## Available Scripts
+## Advantage of our websites:
 
-In the project directory, you can run:
+<ul>
+  <li>There are 2 type of user. Such as, "Buyer" & "Seller".</li>
+  <li>Buyer's Can explore products based on brand. They can book any product. If something bad happened they can "Report" that item.</li>
+  <li>Buyer's will get their booked product in their dashboard and they can pay money by International payment system. </li>
+  <li>Seller's can add their product, delete their product and see their product status (Available/Booked/Paid).</li>
+  <li>Seller's can advertise their best product in home page to attracting customers.</li>
+  <li>Seller can get their customer info in another route.</li>
+  <li>If any buyer report any product admin can remove those product and seller also.</li>
+  <li>Admin can make truster seller's verified and then buyer can see a green tick over verified seller's name.</li>
+</ul>
 
-### `npm start`
+# Used tools:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<ul>
+<li>Reactjs for front-end.</li>
+<li>Firebase for authentication.</li>
+<li>Tailwind as a css framework.</li>
+<li>Daisy UI as a component library.</li>
+<li>Mongodb for data management.</li>
+<li>Stripe for international payment.</li>
+</ul>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Live website Link:
 
-### `npm test`
+website: https://salvage-yard-1ab9c.web.app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Client repo :
+https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-Developits
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# b612-used-products-resale-clients-side-Developits
+Server repo :
+https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-Developits

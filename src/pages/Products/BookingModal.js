@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthContext";
 
-const BookingModal = ({ modalData, setModalData }) => {
+const BookingModal = ({ modalData, setModalData, refetch }) => {
   const { user } = useContext(AuthContext);
   const { _id, productname, resellingprice } = modalData;
 
@@ -20,7 +20,7 @@ const BookingModal = ({ modalData, setModalData }) => {
       location,
     };
 
-    fetch(`http://localhost:5000/products/${_id}`, {
+    fetch(`https://salvage-yard-server.vercel.app/products/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -30,6 +30,7 @@ const BookingModal = ({ modalData, setModalData }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
+          refetch();
           toast.success("Product booked Successfully.");
         }
       });

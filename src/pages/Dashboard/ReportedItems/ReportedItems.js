@@ -11,14 +11,16 @@ const ReportedItems = () => {
   } = useQuery({
     queryKey: ["reportedproduct"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/reportedproduct");
+      const res = await fetch(
+        "https://salvage-yard-server.vercel.app/reportedproduct"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleDeleteProduct = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://salvage-yard-server.vercel.app/products/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

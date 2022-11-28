@@ -60,7 +60,6 @@ const Login = () => {
         };
         setLoginUserEmail(user.email);
         saveUser(userInfo);
-        // navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -83,7 +82,6 @@ const Login = () => {
         };
         setLoginUserEmail(user.email);
         saveUser(userInfo);
-        // navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -93,7 +91,7 @@ const Login = () => {
   };
 
   const saveUser = (userData) => {
-    fetch("http://localhost:5000/addusers", {
+    fetch("https://salvage-yard-server.vercel.app/addusers", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -102,7 +100,6 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setLoginUserEmail(userData.email);
         navigate(from, { replace: true });
       });
   };

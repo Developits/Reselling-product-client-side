@@ -10,7 +10,7 @@ const MyBuyers = () => {
     queryKey: ["bookedbuyer", user.displayName],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/bookedbuyer?user=${user.displayName}`
+        `https://salvage-yard-server.vercel.app/bookedbuyer?user=${user.displayName}`
       );
       const data = await res.json();
       return data;

@@ -11,14 +11,16 @@ const AllSellers = () => {
   } = useQuery({
     queryKey: ["allsellers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/allsellers");
+      const res = await fetch(
+        "https://salvage-yard-server.vercel.app/allsellers"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleDeleteSeller = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://salvage-yard-server.vercel.app/users/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -31,7 +33,7 @@ const AllSellers = () => {
   };
 
   const handleVerifySeller = (id) => {
-    fetch(`http://localhost:5000/verifyseller/${id}`, {
+    fetch(`https://salvage-yard-server.vercel.app/verifyseller/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

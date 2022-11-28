@@ -30,7 +30,9 @@ const AddProduct = () => {
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/category");
+      const res = await fetch(
+        "https://salvage-yard-server.vercel.app/category"
+      );
       const data = await res.json();
       return data;
     },
@@ -65,7 +67,7 @@ const AddProduct = () => {
             status: "available",
           };
 
-          fetch("http://localhost:5000/products", {
+          fetch("https://salvage-yard-server.vercel.app/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",

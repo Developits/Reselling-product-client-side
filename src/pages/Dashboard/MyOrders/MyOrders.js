@@ -11,7 +11,7 @@ const MyOrders = () => {
     queryKey: ["myorders", user.displayName],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/myorders?user=${user.displayName}`
+        `https://salvage-yard-server.vercel.app/myorders?user=${user.displayName}`
       );
       const data = await res.json();
       return data;

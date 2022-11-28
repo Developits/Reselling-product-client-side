@@ -108,7 +108,7 @@ const SignUp = () => {
   };
 
   const saveUser = (userData) => {
-    fetch("http://localhost:5000/addusers", {
+    fetch("https://salvage-yard-server.vercel.app/addusers", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
